@@ -1,0 +1,97 @@
+/* .ARView {
+    margin-top: 50px;
+} */
+
+model-viewer {
+    background-color: #eee;
+    overflow-x: hidden;
+    --poster-color: #eee;
+    width: 60vw;
+    height: 80vh;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 0px 25px;
+}
+
+.arbutton {
+    background-image: url(./assets/ic_view_in_ar_new_googblue_48dp.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 12px 50%;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    bottom: 12px;
+    padding: 0px 16px 0px 40px;
+    font-family: Roboto Regular, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    color:#4285f4;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 18px;
+    border: 1px solid #DADCE0;
+    cursor: pointer;
+}
+
+.arbutton:active {
+    background-color: #E8EAED;
+}
+
+.arbutton:focus {
+    outline: none;
+}
+
+.arbutton:focus-visible {
+    outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+  
+@keyframes elongate {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+}
+  
+model-viewer > #ar-prompt {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+}
+  
+model-viewer[ar-status="session-started"] > #ar-prompt {
+    display: block;
+}
+  
+model-viewer > #ar-prompt > img {
+    animation: circle 4s linear infinite;
+}
+
+@media screen and (max-width: 850px) and (min-width: 601px) {
+    model-viewer {
+        margin: 5% 3% 0 3%;
+        overflow-x: hidden;
+        width: 94%;
+        height: 60vh;
+        border: 1px solid;
+        border-radius: 10px;
+        /* margin: ;    */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    model-viewer {
+        margin: 15% 3% 0 3%;
+        overflow-x: hidden;
+        width: 94%;
+        height: 60vh;
+        border: 1px solid;
+        border-radius: 10px;
+    }
+}
