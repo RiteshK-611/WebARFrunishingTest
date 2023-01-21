@@ -39,6 +39,18 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
+
+app.configure(function() {
+  app.use(allowCrossDomain);
+  //some other code
+})
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
