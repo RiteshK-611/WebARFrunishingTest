@@ -46,10 +46,7 @@ var allowCrossDomain = function(req, res, next) {
   next();
 }
 
-app.configure(function() {
-  app.use(allowCrossDomain);
-  //some other code
-})
+app.use(allowCrossDomain)
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
